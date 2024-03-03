@@ -8,11 +8,12 @@ interface mycoursesType {
     uploader_name: string|null;
     title: string|null;
     category: string|null;
-    price: number|null;
+    price: string|null;
     description: string|null;
     videos?: string[];
     rating?: number[];
   }
+
 
 interface LoginRequest {
     username: string;
@@ -29,15 +30,14 @@ interface RegisterRequest {
 }
 
 interface uploadCourse {
-    tid: string|null;
-    uploader_name: string|null;
-    title: string|null;
-    category: string|null;
-    price: number|null;
-    description: string|null;
-    videos?: string[];
-    rating?: number[];
-  }
+    tid: string;
+    uploader_name: string;
+    title: string;
+    category: string;
+    price: string;
+    description: string;
+    videos?: FileList | null;
+}
 
 interface User {
     _id: string;
@@ -83,11 +83,32 @@ interface User {
            invalidatesTags: ['Auth'],
        }),
        uploadCourse: builder.mutation<void, uploadCourse>({
-           query: (body) => ({
-               url: '/uploadcourse',
-               method: 'POST',
-               body,
-           }),
+           query: (body) => {
+            
+            console.log('this is body',body);
+            
+            const formData = new FormData();
+            formData.append('tid', body.tid);
+            formData.append('uploader_name', body.uploader_name);
+            formData.append('title', body.title);
+            formData.append('category', body.category);
+            formData.append('price', body.price);
+            formData.append('description', body.description);
+            if (body.videos) {
+                for (let i = 0; i < body.videos.length; i++) {
+                    formData.append('videos', body.videos[i]);
+                }
+            }
+
+            console.log('this is form data',formData);
+            
+            
+            return {
+                url: '/uploadcourse',
+                method: 'POST',
+                body:formData
+            }
+           },
            invalidatesTags: ['Auth'],
        }),
        mycourses: builder.query<mycoursesType, void>({
@@ -95,12 +116,13 @@ interface User {
                url: '/mycourses',
                method: 'GET',
            }),
+           
        }),
 
    }),
 });
 
-export const { useLoginMutation, useRegisterMutation,useMycoursesQuery } = authApi;
+export const { useLoginMutation, useRegisterMutation,useMycoursesQuery,useUploadCourseMutation } = authApi;
 
 
 

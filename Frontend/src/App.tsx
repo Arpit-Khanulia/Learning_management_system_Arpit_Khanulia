@@ -2,11 +2,9 @@ import { BrowserRouter,Routes,Route } from "react-router-dom"
 import LoginScreen from "./Pages/Login"
 import RegisterScreen from "./Pages/Register"
 import HomeLayout from "./Layouts/HomeLayout"
-import TeacherHome from "./Pages/TeacherHome"
-import StudentHome from "./Pages/StudentHome"
-import UploadCourse from "./Pages/UploadCourse"
-
-
+import TeacherHome from "./Pages/Teacher/TeacherHome"
+import StudentHome from "./Pages/Student/StudentHome"
+import UploadCourse from "./Pages/Teacher/UploadCourse"
 
 const App = () => {
 

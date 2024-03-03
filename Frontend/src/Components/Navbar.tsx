@@ -30,15 +30,15 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
   { role === 'teacher' && (
     <ul className="menu menu-horizontal px-1">
-        <li><Link to="/teacherhome">My Courses</Link></li>
-        <li><Link to="/uploadcourse">Upload Course</Link></li>
+        <li className="mr-0.5"><Link to="/teacherhome">My Courses</Link></li>
+        <li className="ml-0.5"><Link to="/uploadcourse">Add Course</Link></li>
     </ul>
 )}
 
 { role === 'student' && (
     <ul className="menu menu-horizontal px-1">
-        <li><Link to="/allcourses">All Courses</Link></li>
-        <li><Link to="/purchasedcourse">Purchased Courses</Link></li>
+        <li className="mr-0.5" ><Link to="/allcourses">All Courses</Link></li>
+        <li className="ml-0.5" ><Link to="/purchasedcourse">Purchased Courses</Link></li>
     </ul>
 )}
   </div>

@@ -14,7 +14,7 @@ const byeCourse_1 = __importDefault(require("../controller/byeCourse"));
 const allCourses_1 = __importDefault(require("../controller/allCourses"));
 const myCourses_1 = __importDefault(require("../controller/myCourses"));
 const multer_1 = require("../middleware/multer");
-const cloudinaryUpload_1 = require("../Helper/cloudinaryUpload");
+const uploadCourse_1 = require("../controller/uploadCourse");
 const router = express_1.default.Router();
 exports.router = router;
 router
@@ -27,4 +27,4 @@ router
     .post('/updaterating', auth_1.authenticator, (0, Role_1.checkRole)({ permittedRoles: ['student'] }), updateRating_1.default)
     //Teacher Routes
     .get('/mycourses', auth_1.authenticator, (0, Role_1.checkRole)({ permittedRoles: ['teacher'] }), myCourses_1.default)
-    .post('/uploadcourse', auth_1.authenticator, (0, Role_1.checkRole)({ permittedRoles: ['teacher'] }), multer_1.upload.array('videos'), cloudinaryUpload_1.uploadVideo);
+    .post('/uploadcourse', auth_1.authenticator, (0, Role_1.checkRole)({ permittedRoles: ['teacher'] }), multer_1.upload.array('videos'), uploadCourse_1.uploadCourse);

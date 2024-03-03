@@ -6,24 +6,21 @@ const courseSchema = new mongoose.Schema({
         required: true
     },
     uploader_name: {
-        type: String,
-        required: true
+        type: String
     },
     title: {
         type: String,
         required: true
     },
     category: {
-        type: String,
-        required: true
+        type: String
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     videos: {
         type: [String]

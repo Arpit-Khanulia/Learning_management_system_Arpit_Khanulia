@@ -11,7 +11,7 @@ interface courseType {
     uploader_name: string;
     title: string;
     category: string;
-    price: number;
+    price: string;
     description: string;
     videos: string[];
     rating: number[];

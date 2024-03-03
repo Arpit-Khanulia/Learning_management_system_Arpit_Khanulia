@@ -8,7 +8,7 @@ import byeCourse from '../controller/byeCourse';
 import allCourses from '../controller/allCourses';
 import myCourses from '../controller/myCourses';
 import { upload } from '../middleware/multer';
-import { uploadVideo } from '../Helper/cloudinaryUpload';
+import { uploadCourse } from '../controller/uploadCourse';
 
 
 
@@ -28,7 +28,7 @@ router
 
 //Teacher Routes
 .get('/mycourses',authenticator,checkRole({ permittedRoles: ['teacher'] }),myCourses)
-.post('/uploadcourse',authenticator,checkRole({ permittedRoles: ['teacher'] }), upload.array('videos'), uploadVideo)
+.post('/uploadcourse',authenticator,checkRole({ permittedRoles: ['teacher'] }), upload.array('videos'), uploadCourse)
 
 
 
